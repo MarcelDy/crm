@@ -75,7 +75,7 @@ const products = [
         id:2,
         procesId: 1,
         productName: 'Cheese',
-        price: 120
+        price: 100
     },
     {
         id:3,

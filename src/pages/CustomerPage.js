@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+
+import UserList from '../components/UserList.js'
+import { AppContext } from '../router/AppContext'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -22,6 +25,22 @@ const CustomerPage = () => {
 
     const classes = useStyles();
 
+    const [name, setName] = useState("")
+    const [person, setPerson] = useState("")
+
+    const { customersList } = useContext(AppContext);
+
+    const handleSearch = () => {
+      let currCustomer = {
+        name: name, 
+        contactPerson: person
+      }
+      console.log(currCustomer)
+      // currCustomer = currCustomer.filter(variable => variable !== "")
+      // console.log(currCustomer)
+    }
+
+    
 
     return ( 
         <div className={classes.root}>
@@ -30,26 +49,39 @@ const CustomerPage = () => {
           <Grid item xs={6}>
             <Paper className={classes.paper}>
                 
-                <TextField id="outlined-basic" label="Customer Name" variant="outlined" />
-                <TextField id="outlined-basic" label="Contact Person" variant="outlined" />
+                <TextField onChange={e => setName(e.target.value)} value={name} id="outlined-basic" label="Customer Name" variant="outlined" />
+                <TextField onChange={e => setPerson(e.target.value)} value={person} id="outlined-basic" label="Contact Person" variant="outlined" />
                         <Button
                         variant="contained"
                         color="default"
+                        onClick={handleSearch}
                         className={classes.button}
                         startIcon={<CloudUploadIcon />}
                         >
-                        Upload
+                        Search Customer
                     </Button>
             </Paper>
           </Grid>
           <Grid item xs={6}>
-            <Paper className={classes.paper}>xs=6</Paper>
+            <Paper className={classes.paper}>
+                
+                <Button
+                        variant="contained"
+                        color="default"
+                        onClick={handleSearch}
+                        className={classes.button}
+                        startIcon={<CloudUploadIcon />}
+                        >
+                        ADD RECORD MODLE
+                    </Button>
+            </Paper>
           </Grid>
-          <Grid item xs={6}>
-            <Paper className={classes.paper}>xs=6</Paper>
-          </Grid>
-          <Grid item xs={6}>
-            <Paper className={classes.paper}>xs=6</Paper>
+          <Grid item xs={12}>
+            <Paper className={classes.paper}>
+
+                {/* <UserList records={customersList} /> */}
+
+            </Paper>
           </Grid>
         </Grid>
       </div>

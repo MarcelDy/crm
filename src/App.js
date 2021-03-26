@@ -21,8 +21,10 @@ import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-
+import Avatar from '@material-ui/core/Avatar';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+
+import avatar from './images/user.jpg'
 
 import ChurnPage from './pages/ChurnPage'
 import HotlinePage from './pages/HotlinePage'
@@ -150,10 +152,13 @@ export default function Dashboard() {
                       <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                         SalesLols
                       </Typography>
+                      <Avatar alt="user" src={avatar} />
+
                       <IconButton color="inherit">
                         <Badge badgeContent={4} color="secondary">
                           <NotificationsIcon />
                         </Badge>
+
                       </IconButton>
                     </Toolbar>
                   </AppBar>
